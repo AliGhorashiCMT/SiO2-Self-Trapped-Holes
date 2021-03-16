@@ -1,0 +1,147 @@
+!!!!ndtset      4
+
+ndtset 15
+
+ecut: 3 ecut+ 2
+
+!!!!ndtset 1
+
+charge 1 
+
+spinat 
+
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+0.0 0.0 .1 
+
+nsppol  2
+
+occopt 3
+tsmear .00001
+
+
+
+!!!ionmov 2
+#ionmov 22
+!!ntime 100
+
+#ngkpt    2 2 2         # Density of k points used for the automatic tests of the tutorial
+ngkpt    1 1 1        # Density of k points needed for a converged calculation
+
+#nshiftk  4
+#shiftk   0.0 0.0 0.0  # This grid contains the Gamma point, which is the point at which
+#         0.0 0.5 0.5  # we will compute the (direct) band gap. There are 19 k points
+#         0.5 0.0 0.5  # in the irreducible Brillouin zone, if ngkpt 4 4 4 is used.
+#         0.5 0.5 0.0
+istwfk  *1            # For the GW computations, do not take advantage of the 
+                      # specificities of k points to reduce the number of components of the
+                      # wavefunction.
+nband  100
+#tolvrs1 1e-10
+tolrff 0.02
+
+# Definition of the unit cell: fcc
+acell  3*15         # Experimental lattice constants
+rprim  1.0  0.0  0.0   # FCC primitive vectors (to be scaled by acell)
+       0.0  1.0  0.   
+       0.0  0.0  1.0
+
+# Definition of the atom types
+ntypat  3         # There is only one type of atom
+znucl 1 8 14          # The keyword "znucl" refers to the atomic number of the 
+
+
+# Definition of the atoms
+!!!natom 7           # There are two atoms
+natom 21
+
+
+!!!!!typat  3 2 2 1 1 1 1        # They both are of type 1, that is, Silicon.
+typat 3 3 3 3 3 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1
+#xred              # Reduced coordinate of atoms
+#      0.0  0.0  0.0
+#      0.25 0.25 0.25
+
+#xcart 0.0 0.0 0.0 
+#      -3 -1.0 0.0
+#       3  -1.0 0.0
+#      -4  0.0 -1.0
+#      -4 0.0 1.0 
+#      -4  -2 0.0
+#      4  0.0 -1.0
+#      4 0.0 1.0 
+#      4  -2 0.0
+
+
+####  RELAXED ATOMIC POSITIONS
+xcart
+#0.000000000        -1.25897528716486  0.00000000
+#-2.3200534445272    -3.44096207365056  0.00000000
+#2.32005344452722  -3.44096207365056   0.00000000
+
+#0.000000000        -0.5 -1.4
+#0.000000000        -0.5 1.40000000
+
+#-2.3200534445272    -3.44096207365056  2
+#2.32005344452722  -3.44096207365056   -2
+
+ -0.000000000000000  -0.000000000000000   0.000000000000000 
+  3.553511371696693  -3.553511371696693  -3.553511371696693 
+ -3.553511371696693   3.553511371696693  -3.553511371696693 
+  -3.553511371696693  -3.553511371696693   3.553511371696693 
+  3.553511371696693   3.553511371696693   3.553511371696693 
+  1.755649112891355  -1.755649112891355  -1.755649112891355 
+ -1.755649112891355   1.755649112891355  -1.755649112891355 
+ -1.755649112891355  -1.755649112891355   1.755649112891355 
+  1.755649112891355   1.755649112891355   1.755649112891355 
+  2.956542494204958  -2.956542494204958  -6.256001689665986 
+  2.956542494204958  -6.256001689665986  -2.956542494204958 
+  6.256001689665986  -2.956542494204958  -2.956542494204958 
+ -2.956542494204958   2.956542494204958  -6.256001689665986 
+ -2.956542494204958   6.256001689665986  -2.956542494204958 
+ -6.256001689665986   2.956542494204958  -2.956542494204958 
+ -2.956542494204958  -2.956542494204958   6.256001689665986 
+ -2.956542494204958  -6.256001689665986   2.956542494204958 
+ -6.256001689665986  -2.956542494204958   2.956542494204958 
+ 6.256001689665986   2.956542494204958   2.956542494204958 
+ 2.956542494204958   6.256001689665986   2.956542494204958
+  2.956542494204958   2.956542494204958   6.256001689665986 
+
+
+
+# Definition of the planewave basis set (at convergence 16 Rydberg 8 Hartree)
+#ecut 4        # Maximal kinetic energy cut-off, in Hartree
+
+# Definition of the SCF procedure
+nstep   100       # Maximal number of SCF cycles
+diemac  12.0      # Although this is not mandatory, it is worth to
+                  # precondition the SCF cycle. The model dielectric
+                  # function used as the standard preconditioner
+                  # is described in the "dielng" input variable section.
+                  # Here, we follow the prescription for bulk silicon.
+
+
+
+
+ pp_dirpath "$ABI_PSPDIR"
+!!! pseudos "Pseudodojo_nc_sr_04_pbe_standard_psp8/Si.psp8"
+pseudos "H.psp8, O.psp8, Si.psp8"
+
