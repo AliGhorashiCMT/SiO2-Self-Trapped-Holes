@@ -5,17 +5,19 @@
 
 !!! BELOW WE WILL BE EXAMINING THE CONVERGENCE OF PARAMETERS USING AN ABINIT DOUBLE DATA SET
 
-ndtset 10
-udtset 2 5
-
-acell1? 15 15 15
-acell2? 30 30 30
+#ndtset 10
+#udtset 2 5
+ndtset 1
+acell 15 15 15 
+#acell1? 15 15 15
+#acell2? 30 30 30
 #acell2? 20 20 20
 #acell3? 25 25 25
 #acell4? 30 30 30 
 #acell5? 35 35 35
 
-ecut?: 5 ecut?+ 8
+#ecut?: 5 ecut?+ 8
+ecut 10
 
 !iscf2 -1
 !tolwfr2 1.0d-9
@@ -29,7 +31,6 @@ ecut?: 5 ecut?+ 8
 
 
 ####ecut: 3 ecut+ 2
-!!!!ndtset 1
 
 charge 1 
 
@@ -69,8 +70,8 @@ tsmear .00001
 #ngkpt    2 2 2         # Density of k points used for the automatic tests of the tutorial
 #ngkpt    1 1 1        # Density of k points needed for a converged calculation
 
-kptopt 0
-nkpt 1
+#kptopt 0
+#nkpt 1
 
 #nshiftk  4
 #shiftk   0.0 0.0 0.0  # This grid contains the Gamma point, which is the point at which
@@ -164,7 +165,7 @@ diemac  12.0      # Although this is not mandatory, it is worth to
                   # Here, we follow the prescription for bulk silicon.
 
 
-
+ixc -402
 
  pp_dirpath "$ABI_PSPDIR"
 !!! pseudos "Pseudodojo_nc_sr_04_pbe_standard_psp8/Si.psp8"
